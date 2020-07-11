@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_5" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_49" data-name="Grupo 49" transform="translate(-429 317)">
+    <g transform="matrix(1, 0, 0, 1, 429, -317)" filter="url(#Elipse_5)">
+      <circle id="Elipse_5-2" data-name="Elipse 5" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_map-gym" data-name="Icon map-gym" d="M18.558,47.083a1.067,1.067,0,0,1-.053,1.5l-2.3,2.153a1.059,1.059,0,0,1-1.5-.054L1.3,36.233a1.067,1.067,0,0,1,.054-1.5l2.305-2.15a1.058,1.058,0,0,1,1.5.054ZM35.666,19.9a1.067,1.067,0,0,1-.054,1.5L21.122,34.931a1.059,1.059,0,0,1-1.5-.054l-3.459-3.732a1.067,1.067,0,0,1,.054-1.5L30.708,16.109a1.057,1.057,0,0,1,1.495.054L35.666,19.9ZM23.488,42.475a1.068,1.068,0,0,1-.054,1.5l-2.305,2.152a1.058,1.058,0,0,1-1.5-.054L6.233,31.624a1.067,1.067,0,0,1,.053-1.5l2.3-2.151a1.059,1.059,0,0,1,1.5.054ZM45.813,20.413a1.067,1.067,0,0,1-.055,1.5l-2.3,2.152a1.06,1.06,0,0,1-1.5-.053L28.556,9.567a1.066,1.066,0,0,1,.053-1.5l2.311-2.157a1.057,1.057,0,0,1,1.495.054l13.4,14.45Zm4.922-4.6a1.069,1.069,0,0,1-.054,1.5l-2.3,2.151a1.057,1.057,0,0,1-1.495-.053L33.487,4.96a1.069,1.069,0,0,1,.053-1.5l2.3-2.155a1.055,1.055,0,0,1,1.493.053Z" transform="translate(461.982 -284.019)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_3" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_42" data-name="Grupo 42" transform="translate(544 317)">
+    <g transform="matrix(1, 0, 0, 1, -544, -317)" filter="url(#Elipse_3)">
+      <circle id="Elipse_3-2" data-name="Elipse 3" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_awesome-sticky-note" data-name="Icon awesome-sticky-note" d="M34.821,34.393H50V4.929A2.672,2.672,0,0,0,47.321,2.25H2.679A2.672,2.672,0,0,0,0,4.929V49.571A2.672,2.672,0,0,0,2.679,52.25H32.143V37.071A2.686,2.686,0,0,1,34.821,34.393Zm14.4,6.138L38.281,51.469a2.677,2.677,0,0,1-1.9.781h-.67V37.964H50v.681A2.67,2.67,0,0,1,49.219,40.531Z" transform="translate(-510 -285.25)" fill="#fff"/>
+  </g>
+</svg>

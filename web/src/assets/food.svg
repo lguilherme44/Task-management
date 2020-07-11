@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_4" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_43" data-name="Grupo 43" transform="translate(414 317)">
+    <g transform="matrix(1, 0, 0, 1, -414, -317)" filter="url(#Elipse_4)">
+      <circle id="Elipse_4-2" data-name="Elipse 4" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_map-food" data-name="Icon map-food" d="M50.61,16.17l-4.1,36.654H32.666L28.584,15.987h16.9L48.826,2.825l1.894.651L47.515,16.143l3.095.027ZM26.626,37.377s.518-4.753-6.661-4.753H8.531c-7.169,0-6.661,4.753-6.661,4.753ZM1.87,48.071s-.507,4.753,6.661,4.753H19.966c7.179,0,6.661-4.753,6.661-4.753H1.87Zm23.682-2.377c1.175,0,2.124-1.324,2.124-2.97s-.949-2.972-2.124-2.972H2.845C1.675,39.753.72,41.07.72,42.725s.955,2.97,2.125,2.97Z" transform="translate(-384.72 -285.825)" fill="#fff"/>
+  </g>
+</svg>

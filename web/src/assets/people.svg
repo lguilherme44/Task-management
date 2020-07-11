@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_4" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_45" data-name="Grupo 45" transform="translate(132 317)">
+    <g transform="matrix(1, 0, 0, 1, -132, -317)" filter="url(#Elipse_4)">
+      <circle id="Elipse_4-2" data-name="Elipse 4" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_material-people" data-name="Icon material-people" d="M42.409,23.864a8.182,8.182,0,1,0-8.182-8.182A8.148,8.148,0,0,0,42.409,23.864Zm-21.818,0a8.182,8.182,0,1,0-8.182-8.182A8.148,8.148,0,0,0,20.591,23.864Zm0,5.455c-6.355,0-19.091,3.191-19.091,9.545v6.818H39.682V38.864C39.682,32.509,26.945,29.318,20.591,29.318Zm21.818,0c-.791,0-1.691.055-2.645.136,3.164,2.291,5.373,5.373,5.373,9.409v6.818H61.5V38.864C61.5,32.509,48.764,29.318,42.409,29.318Z" transform="translate(-104.5 -284.5)" fill="#fff"/>
+  </g>
+</svg>

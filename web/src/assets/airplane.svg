@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_4" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_48" data-name="Grupo 48" transform="translate(-276 317)">
+    <g transform="matrix(1, 0, 0, 1, 276, -317)" filter="url(#Elipse_4)">
+      <circle id="Elipse_4-2" data-name="Elipse 4" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_metro-airplane" data-name="Icon metro-airplane" d="M40.071,33.176,31.144,24.25,52.571,8.178l-6.25-6.25L19.537,12.643,11.1,4.21C8.674,1.78,5.279,1.2,3.56,2.916S2.424,8.029,4.855,10.46l8.432,8.432L2.571,45.678l6.25,6.25L24.894,30.5l8.927,8.927v12.5h6.25L43.2,42.551l9.374-3.125v-6.25h-12.5Z" transform="translate(307.429 -284.928)" fill="#fff"/>
+  </g>
+</svg>

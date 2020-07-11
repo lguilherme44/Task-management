@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_4" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_44" data-name="Grupo 44" transform="translate(276 317)">
+    <g transform="matrix(1, 0, 0, 1, -276, -317)" filter="url(#Elipse_4)">
+      <circle id="Elipse_4-2" data-name="Elipse 4" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_material-work" data-name="Icon material-work" d="M46.2,12.6H36.6V7.8A4.783,4.783,0,0,0,31.8,3H22.2a4.783,4.783,0,0,0-4.8,4.8v4.8H7.8a4.763,4.763,0,0,0-4.776,4.8L3,43.8a4.783,4.783,0,0,0,4.8,4.8H46.2A4.783,4.783,0,0,0,51,43.8V17.4A4.783,4.783,0,0,0,46.2,12.6Zm-14.4,0H22.2V7.8h9.6Z" transform="translate(-244 -284)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="132.285" viewBox="0 0 118 132.285">
+  <defs>
+    <filter id="Icon_awesome-bell" x="0" y="0" width="118" height="132.285" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_50" data-name="Grupo 50" transform="translate(-589 321)">
+    <g transform="matrix(1, 0, 0, 1, 589, -321)" filter="url(#Icon_awesome-bell)">
+      <path id="Icon_awesome-bell-2" data-name="Icon awesome-bell" d="M50,114.285A14.283,14.283,0,0,0,64.279,100H35.721A14.283,14.283,0,0,0,50,114.285ZM98.078,80.868C93.765,76.234,85.7,69.263,85.7,46.428c0-17.344-12.161-31.228-28.558-34.634V7.143a7.138,7.138,0,1,0-14.277,0v4.652C26.464,15.2,14.3,29.085,14.3,46.428c0,22.835-8.069,29.806-12.382,34.44A6.974,6.974,0,0,0,0,85.714a7.149,7.149,0,0,0,7.165,7.143H92.835A7.148,7.148,0,0,0,100,85.714a6.97,6.97,0,0,0-1.922-4.846Z" transform="translate(9 6)" fill="#7159c1"/>
+    </g>
+  </g>
+</svg>

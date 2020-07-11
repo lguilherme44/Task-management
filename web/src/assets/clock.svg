@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125.285" height="125.285" viewBox="0 0 125.285 125.285">
+  <defs>
+    <filter id="Icon_awesome-clock" x="0" y="0" width="125.285" height="125.285" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_awesome-clock)">
+    <path id="Icon_awesome-clock-2" data-name="Icon awesome-clock" d="M54.205.563a53.643,53.643,0,1,0,53.643,53.643A53.633,53.633,0,0,0,54.205.563ZM66.556,76.29,47.478,62.425a2.613,2.613,0,0,1-1.06-2.1v-36.4a2.6,2.6,0,0,1,2.6-2.6H59.4a2.6,2.6,0,0,1,2.6,2.6V53.708L75.727,63.7a2.594,2.594,0,0,1,.562,3.634l-6.1,8.392A2.613,2.613,0,0,1,66.556,76.29Z" transform="translate(8.44 8.44)" fill="#7159c1"/>
+  </g>
+</svg>

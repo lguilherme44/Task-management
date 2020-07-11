@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_2" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Icon_ionic-ios-football" x="25" y="25" width="68" height="68" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_41" data-name="Grupo 41" transform="translate(674 317)">
+    <g transform="matrix(1, 0, 0, 1, -674, -317)" filter="url(#Elipse_2)">
+      <circle id="Elipse_2-2" data-name="Elipse 2" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -674, -317)" filter="url(#Icon_ionic-ios-football)">
+      <path id="Icon_ionic-ios-football-2" data-name="Icon ionic-ios-football" d="M28.375,3.375a25,25,0,1,0,25,25A25,25,0,0,0,28.375,3.375Zm15.3,9.7a21.466,21.466,0,0,1,2.716,3.305.44.44,0,0,1,.048.421l-1.731,4.964a.478.478,0,0,1-.252.276L37.546,25.19a.484.484,0,0,1-.5-.072l-6.8-5.721a.493.493,0,0,1-.168-.373V11.44a.48.48,0,0,1,.216-.4L34.9,7.906a.473.473,0,0,1,.421-.06A21.9,21.9,0,0,1,43.675,13.075ZM34.793,48.844a.444.444,0,0,1-.312.288A21.6,21.6,0,0,1,28.375,50a21.98,21.98,0,0,1-6.106-.865.5.5,0,0,1-.312-.288l-1.971-5.168a.5.5,0,0,1,.024-.4l2.68-5.084a.486.486,0,0,1,.421-.252H33.627a.472.472,0,0,1,.421.252l2.68,5.084a.5.5,0,0,1,.024.4Zm-8.1-37.38v7.584a.493.493,0,0,1-.168.373L19.709,25.13a.484.484,0,0,1-.5.072l-6.911-3.149a.474.474,0,0,1-.252-.276L10.31,16.825a.471.471,0,0,1,.048-.421A21.791,21.791,0,0,1,21.44,7.894a.473.473,0,0,1,.421.06l4.615,3.137A.4.4,0,0,1,26.692,11.464ZM6.945,29.349l4.339-3.75a.48.48,0,0,1,.517-.072l6.3,2.861a.481.481,0,0,1,.264.325L20.118,35.6a.575.575,0,0,1-.036.349l-2.788,5.276a.468.468,0,0,1-.433.252L11.332,41.4a.5.5,0,0,1-.385-.192A21.48,21.48,0,0,1,6.776,29.745.526.526,0,0,1,6.945,29.349Zm32.5,11.863-2.776-5.264a.441.441,0,0,1-.036-.349l1.755-6.887a.481.481,0,0,1,.264-.325l6.3-2.861a.5.5,0,0,1,.517.072l4.339,3.75a.486.486,0,0,1,.168.4A21.418,21.418,0,0,1,45.8,41.212a.467.467,0,0,1-.385.192l-5.541.072A.527.527,0,0,1,39.445,41.212Z" transform="translate(30.63 30.63)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
