@@ -8,19 +8,18 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  /* background: linear-gradient(45deg, #7159c1, #bb02ff); */
+  background-attachment: fixed;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.5s;
   margin: 25px;
 
   opacity: ${(props) => (props.done ? 0.5 : 1)};
 
   &:hover {
-    opacity: 0.2;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(130, 130, 130, 1);
-    -moz-box-shadow: 1px 1px 1px 0px rgba(130, 130, 130, 1);
-    box-shadow: 1px 1px 1px 0px rgba(130, 130, 130, 1);
+    opacity: 0.5;
   }
 `;
 
@@ -30,6 +29,7 @@ export const TopCard = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+  text-align: center;
 
   img {
     width: 100px;

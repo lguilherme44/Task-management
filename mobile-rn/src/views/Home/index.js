@@ -55,6 +55,7 @@ export default function Home({ navigation }) {
         showNotification={true}
         showBack={false}
         notifications={Notification}
+        navigation={navigation}
       />
 
       <View style={styles.container}>

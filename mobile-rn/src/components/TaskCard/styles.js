@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     padding: 20,
     borderColor: 'rgba(255, 255, 255, 0.2)',
     borderWidth: 0.3,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   cardLeft: {
     flexDirection: 'column',
@@ -32,6 +32,7 @@ const style = StyleSheet.create({
     fontSize: 16,
     color: 'rgba(255, 255, 255, 0.5)',
     textAlign: 'center',
+    marginTop: 10,
   },
   cardRight: {
     flexDirection: 'column',

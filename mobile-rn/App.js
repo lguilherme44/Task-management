@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createStackNavigator();
+import { AuthProvider } from './src/contexts/auth';
+
+import Routes from './src/routes';
 
 /* Disable alerts */
 console.disableYellowBox = true;
@@ -18,9 +19,22 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 export default function App() {
   const [isReady, setIsReady] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  // useEffect(() => {
+  //   async function isSigned() {
+  //     try {
+  //       await AsyncStorage.getItem('@storage_key');
+  //     } catch (e) {
+  //       alert(e);
+  //     }
+  //   }
+
+  //   isSigned();
+  // }, []);
 
   useEffect(() => {
     async function loadFonts() {
@@ -37,32 +51,12 @@ export default function App() {
   if (!isReady) {
     return <AppLoading />;
   }
+
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode='none'>
-        {isSignedIn ? (
-          <>
-            <Stack.Screen
-              name='Home'
-              component={Home}
-              options={{ title: 'Home' }}
-            />
-            <Stack.Screen
-              name='Task'
-              component={Task}
-              options={{ title: 'Task' }}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name='Login'
-              component={Login}
-              options={{ title: 'Login' }}
-            />
-          </>
-        )}
-      </Stack.Navigator>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 }

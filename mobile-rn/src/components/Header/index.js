@@ -13,7 +13,14 @@ import api from '../../services/api';
 
 import { useNavigation } from '@react-navigation/native';
 
-export default function Header({ showNotification, showBack, notifications }) {
+import AsyncStorage from '@react-native-community/async-storage';
+
+export default function Header({
+  showNotification,
+  showBack,
+  notifications,
+  navigation,
+}) {
   const [lateCount, setLateCount] = useState();
   const navigate = useNavigation();
 
@@ -27,9 +34,15 @@ export default function Header({ showNotification, showBack, notifications }) {
     lateVerify();
   }, []);
 
+  const handleLogout = async () => {
+    await AsyncStorage.clear();
+  };
+
   return (
     <View style={styles.header}>
-      <Image style={styles.logo} source={logo} />
+      <TouchableOpacity onPress={handleLogout}>
+        <Image style={styles.logo} source={logo} />
+      </TouchableOpacity>
 
       {showBack && (
         <TouchableOpacity

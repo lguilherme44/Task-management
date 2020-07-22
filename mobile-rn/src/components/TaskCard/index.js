@@ -28,14 +28,13 @@ export default function TaskCard({
       }
     >
       <View style={styles.cardLeft}>
-        <Text style={styles.cardTitle}>{title}</Text>
         {done ? (
           <Image source={iconDone} style={styles.iconDone} />
         ) : (
           <Image source={typeIcons[type]} style={styles.typeActive} />
         )}
       </View>
-
+      <Text style={styles.cardTitle}>{title}</Text>
       <View style={styles.cardRight}>
         <Text style={styles.cardDate}>{date}</Text>
         <Text style={styles.cardHour}>{hour}</Text>
