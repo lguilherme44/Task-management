@@ -87,7 +87,6 @@ const Task = ({ route, navigation }) => {
           userId: parseInt(1, 10),
         })
         .then((response) => {
-          console.log(response.data);
           navigation.navigate('Home');
         });
     });
