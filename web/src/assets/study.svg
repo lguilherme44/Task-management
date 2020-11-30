@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_4" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_46" data-name="Grupo 46" transform="translate(0 317)">
+    <g transform="matrix(1, 0, 0, 1, 0, -317)" filter="url(#Elipse_4)">
+      <circle id="Elipse_4-2" data-name="Elipse 4" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_map-school" data-name="Icon map-school" d="M30.373,7.953v34.1H5.573V7.953h24.8M34.507,3.82H1.44v43.4H34.507V3.82ZM8.673,12.087h18.6V16.22H8.673Zm0,7.233h18.6v4.133H8.673Zm0,7.233h18.6v4.133H8.673Zm0,7.233h18.6V37.92H8.673Zm32.033-21.7h8.267V41.02H40.707ZM44.846.72a4.118,4.118,0,0,0-4.14,4.068v4.2h8.267v-4.2A4.113,4.113,0,0,0,44.846.72Zm-4.2,43.4,4.176,6.6,4.155-6.6Z" transform="translate(33.56 -283.72)" fill="#fff"/>
+  </g>
+</svg>

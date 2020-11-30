@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <filter id="Elipse_4" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.404"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_47" data-name="Grupo 47" transform="translate(-138 317)">
+    <g transform="matrix(1, 0, 0, 1, 138, -317)" filter="url(#Elipse_4)">
+      <circle id="Elipse_4-2" data-name="Elipse 4" cx="50" cy="50" r="50" transform="translate(9 9)" fill="#7159c1"/>
+    </g>
+    <path id="Icon_awesome-shopping-cart" data-name="Icon awesome-shopping-cart" d="M51.574,29.426,56.191,9.113A2.344,2.344,0,0,0,53.905,6.25H15.548l-.9-4.376A2.344,2.344,0,0,0,12.356,0H2.344A2.344,2.344,0,0,0,0,2.344V3.906A2.344,2.344,0,0,0,2.344,6.25H9.168l6.86,33.539a5.469,5.469,0,1,0,6.547.836H43.049a5.467,5.467,0,1,0,6.211-1.016l.539-2.371a2.344,2.344,0,0,0-2.285-2.863H21.3l-.639-3.125H49.289A2.344,2.344,0,0,0,51.574,29.426Z" transform="translate(169 -283)" fill="#fff"/>
+  </g>
+</svg>
