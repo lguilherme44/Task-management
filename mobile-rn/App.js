@@ -7,12 +7,7 @@ import { AuthProvider } from './src/contexts/auth';
 import Routes from './src/routes';
 
 /* Disable alerts */
-console.disableYellowBox = true;
-
-/* Pages */
-import Login from './src/views/Login';
-import Home from './src/views/Home';
-import Task from './src/views/Task';
+// console.disableYellowBox = true;
 
 /* Native Base */
 import { AppLoading } from 'expo';
@@ -24,17 +19,17 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default function App() {
   const [isReady, setIsReady] = useState(false);
 
-  // useEffect(() => {
-  //   async function isSigned() {
-  //     try {
-  //       await AsyncStorage.getItem('@storage_key');
-  //     } catch (e) {
-  //       alert(e);
-  //     }
-  //   }
+  useEffect(() => {
+    async function isSigned() {
+      try {
+        await AsyncStorage.getItem('@storage_key');
+      } catch (e) {
+        alert(e);
+      }
+    }
 
-  //   isSigned();
-  // }, []);
+    isSigned();
+  }, []);
 
   useEffect(() => {
     async function loadFonts() {
