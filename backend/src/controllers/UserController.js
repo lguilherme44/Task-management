@@ -9,15 +9,13 @@ class UserController {
 
     const password_hash = bcrypt.hashSync(password, 10);
 
-    try {
-      const user = await User.create({
-        name,
-        email,
-        password: password_hash,
-      });
-    } catch (error) {
-      return res.send({ error });
-    }
+    const user = await User.create({
+      name,
+      email,
+      password: password_hash,
+    });
+
+    return res.send({ user });
   }
 
   async all(req, res) {
