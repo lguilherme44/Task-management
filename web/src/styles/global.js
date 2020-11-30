@@ -10,16 +10,14 @@ export default createGlobalStyle`
 
     }
     html, body, #root{
-  max-width: 100vw;
-  max-height: 100vh;
-
-      width: 100%;
-      height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
     }
 
     body {
       font-family: 'Roboto', sans-serif;
-      /* background: linear-gradient(324deg, #0d0d0dfc 0%, #0d0d0dc7 35%, #0d0d0dde 100%) repeat-y; */
     }
   
     button {
