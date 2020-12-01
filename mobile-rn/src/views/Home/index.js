@@ -19,7 +19,7 @@ import TaskCard from '../../components/TaskCard';
 import api from '../../services/api';
 
 export default function Home({ navigation }) {
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState('today');
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -39,7 +39,7 @@ export default function Home({ navigation }) {
     }
 
     getTasks();
-  }, [filter]);
+  }, []);
 
   function Notification() {
     setFilter('late');

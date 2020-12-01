@@ -38,25 +38,27 @@ const Task = ({ route, navigation }) => {
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
   const [userId, setUserId] = useState();
+  const [when, setWhen] = useState();
 
-  // useEffect(() => {
-  //   if (route.params.id) {
-  //     async function loadDetailsTask() {
-  //       const { data } = await api.get(`/task/${route.params.id}`);
+  useEffect(() => {
+    if (route.params !== undefined) {
+      async function loadDetailsTask() {
+        const { data } = await api.get(`/task/${route.params.id}`);
 
-  //       if (data) {
-  //         setType(data.type);
-  //         setTitle(data.title);
-  //         setDescription(data.description);
-  //         setWhen(data.when);
-  //         setDone(data.done);
-  //         setUserId(data.userId);
-  //       }
-  //     }
+        if (data) {
+          setType(data.type);
+          setTitle(data.title);
+          setDescription(data.description);
+          setWhen(data.when);
+          setDone(data.done);
+          setUserId(data.userId);
+        }
+      }
+      loadDetailsTask();
 
-  //     loadDetailsTask();
-  //   }
-  // }, []);
+      return () => console.log();
+    }
+  }, []);
 
   const formatDate = format(new Date(date), 'yyyy-MM-dd');
   const formatTime = format(new Date(date), 'HH:mm');
@@ -90,6 +92,16 @@ const Task = ({ route, navigation }) => {
           navigation.navigate('Home');
         });
     });
+  }
+
+  async function handleRemove() {
+    if (route.params !== undefined) {
+      const response = await api.delete(`/task/${route.params.id}`);
+
+      if (response) {
+        navigation.navigate('Home');
+      }
+    }
   }
 
   const onChange = (event, selectedDate) => {
@@ -192,7 +204,7 @@ const Task = ({ route, navigation }) => {
               <Text style={styles.switchLabel}>Concluído</Text>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleRemove}>
               <Text style={styles.removeLabel}>EXCLUIR</Text>
             </TouchableOpacity>
           </View>
