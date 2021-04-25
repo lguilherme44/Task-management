@@ -21,7 +21,6 @@ Em breve termino o Mobile, esta sendo construído em React Native.
 ## Tarefas a azer
 
 - [x] Privatizar rotas no Frontend
-- [ ] Implementar Redux ou ContextAPI
 - [ ] Desenvolver Mobile
 
 # Screenshots
