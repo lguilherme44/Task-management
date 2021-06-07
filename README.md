@@ -59,5 +59,12 @@ Config IP in api file: ./src/services/api.js
 
 ```2 - yarn start```
 
+### Mobile
+Config IP in api file: ./src/services/api.js
+
+```1 - yarn```
+
+```2 - yarn start```
+
 #### Dúvidas e/ou sugestões? 
 [Guilherme Lellis](mailto:lguilherme44@gmail.com)
