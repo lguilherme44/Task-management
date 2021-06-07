@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, useContext } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
 /* Styles */
-import styles from './styles';
+import styles from "./styles";
 
 /* Icons */
-import logo from '../../assets/logo.png';
-import bell from '../../assets/bell.png';
-import back from '../../assets/back.png';
+import logo from "../../assets/logo.png";
+import bell from "../../assets/bell.png";
+import back from "../../assets/back.png";
 
-import api from '../../services/api';
-
-import { useNavigation } from '@react-navigation/native';
-
-import AsyncStorage from '@react-native-community/async-storage';
+import api from "../../services/api";
+import { useNavigation } from "@react-navigation/native";
+import AuthProvider from "../../contexts/auth";
 
 export default function Header({
   showNotification,
@@ -23,6 +21,7 @@ export default function Header({
 }) {
   const [lateCount, setLateCount] = useState();
   const navigate = useNavigation();
+  const { signOut } = useContext(AuthProvider);
 
   useEffect(() => {
     async function lateVerify() {
@@ -34,8 +33,8 @@ export default function Header({
     lateVerify();
   }, []);
 
-  const handleLogout = async () => {
-    await AsyncStorage.clear();
+  const handleLogout = () => {
+    signOut();
   };
 
   return (
