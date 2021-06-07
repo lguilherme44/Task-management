@@ -7,7 +7,7 @@ export const Container = styled.div`
 export const FilterArea = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 30px;
 
   button {
