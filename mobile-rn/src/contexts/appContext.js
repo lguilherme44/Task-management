@@ -27,7 +27,7 @@ export const AppContextProvider = ({ children }) => {
 
   useEffect(() => {
     loadTasks();
-  }, []);
+  }, [filter]);
 
   async function removeTask(route) {
     const { data } = await api.delete(`/task/${route.params.id}`);
