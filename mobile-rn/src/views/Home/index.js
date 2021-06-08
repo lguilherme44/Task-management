@@ -1,52 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import {
   Text,
   View,
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
-} from 'react-native';
+} from "react-native";
 
 /* Styles */
-import styles from './styles';
+import styles from "./styles";
 
 /* Components */
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import TaskCard from '../../components/TaskCard';
-
-/* Api */
-import api from '../../services/api';
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import TaskCard from "../../components/TaskCard";
+import AppContext from "../../contexts/appContext";
 
 export default function Home({ navigation }) {
-  const [filter, setFilter] = useState('today');
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function getTasks() {
-      setLoading(true);
-      await api
-        .get(`/task/filter/${filter}/${parseInt(1, 10)}`)
-        .then((response) => {
-          setTasks(response.data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          alert(error);
-          setLoading(false);
-        });
-    }
-
-    getTasks();
-  }, []);
+  const { tasks, setFilter, filter, loading } = useContext(AppContext);
 
   function Notification() {
-    setFilter('late');
+    setFilter("late");
   }
 
   function newTask() {
-    navigation.navigate('Task');
+    navigation.navigate("Task");
   }
 
   return (
@@ -60,10 +38,10 @@ export default function Home({ navigation }) {
 
       <View style={styles.container}>
         <View style={styles.filter}>
-          <TouchableOpacity onPress={() => setFilter('all')}>
+          <TouchableOpacity onPress={() => setFilter("all")}>
             <Text
               style={
-                filter === 'all'
+                filter === "all"
                   ? styles.filterTextActived
                   : styles.filterTextInative
               }
@@ -72,10 +50,10 @@ export default function Home({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setFilter('today')}>
+          <TouchableOpacity onPress={() => setFilter("today")}>
             <Text
               style={
-                filter === 'today'
+                filter === "today"
                   ? styles.filterTextActived
                   : styles.filterTextInative
               }
@@ -84,10 +62,10 @@ export default function Home({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setFilter('week')}>
+          <TouchableOpacity onPress={() => setFilter("week")}>
             <Text
               style={
-                filter === 'week'
+                filter === "week"
                   ? styles.filterTextActived
                   : styles.filterTextInative
               }
@@ -96,10 +74,10 @@ export default function Home({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setFilter('month')}>
+          <TouchableOpacity onPress={() => setFilter("month")}>
             <Text
               style={
-                filter === 'month'
+                filter === "month"
                   ? styles.filterTextActived
                   : styles.filterTextInative
               }
@@ -108,10 +86,10 @@ export default function Home({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setFilter('year')}>
+          <TouchableOpacity onPress={() => setFilter("year")}>
             <Text
               style={
-                filter === 'year'
+                filter === "year"
                   ? styles.filterTextActived
                   : styles.filterTextInative
               }
@@ -126,12 +104,12 @@ export default function Home({ navigation }) {
         </View>
 
         {loading ? (
-          <ActivityIndicator color='#7159c1' size={50} />
+          <ActivityIndicator color="#7159c1" size={50} />
         ) : (
           <FlatList
             data={tasks}
             contentContainerStyle={{
-              alignItems: 'center',
+              alignItems: "center",
             }}
             numColumns={2}
             keyExtractor={(item) => item.id}
@@ -153,7 +131,7 @@ export default function Home({ navigation }) {
           ></FlatList>
         )}
 
-        <Footer icon={'add'} onPress={newTask} />
+        <Footer icon={"add"} onPress={newTask} />
       </View>
     </>
   );

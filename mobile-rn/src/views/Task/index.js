@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 
-import Header from '../../components/Header';
+import Header from "../../components/Header";
 
-import Footer from '../../components/Footer';
+import Footer from "../../components/Footer";
 
-import api from '../../services/api';
+import api from "../../services/api";
 
-import styles from './styles';
+import styles from "./styles";
 
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
-import typeIcons from '../../utils/typeIcons';
+import typeIcons from "../../utils/typeIcons";
 
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 import {
   View,
@@ -27,7 +27,8 @@ import {
   TextInput,
   Platform,
   Keyboard,
-} from 'react-native';
+} from "react-native";
+import AppContext from "../../contexts/appContext";
 
 const Task = ({ route, navigation }) => {
   const [done, setDone] = useState(false);
@@ -35,10 +36,12 @@ const Task = ({ route, navigation }) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('date');
+  const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
   const [userId, setUserId] = useState();
   const [when, setWhen] = useState();
+
+  const { removeTask, loadTasks } = useContext(AppContext);
 
   useEffect(() => {
     if (route.params !== undefined) {
@@ -55,21 +58,19 @@ const Task = ({ route, navigation }) => {
         }
       }
       loadDetailsTask();
-
-      return () => console.log();
     }
-  }, []);
+  }, [route]);
 
-  const formatDate = format(new Date(date), 'yyyy-MM-dd');
-  const formatTime = format(new Date(date), 'HH:mm');
+  const formatDate = format(new Date(date), "yyyy-MM-dd");
+  const formatTime = format(new Date(date), "HH:mm");
 
   async function handleSave() {
     // Validação dos dados
     let ValidationSchema = Yup.object().shape({
-      title: Yup.string().required('Titulo é obrigatório!'),
-      description: Yup.string().required('Descrição é obrigatória!'),
-      type: Yup.number().required('Tipo é obrigatório!'),
-      date: Yup.string().required('Data é obrigatória!'),
+      title: Yup.string().required("Titulo é obrigatório!"),
+      description: Yup.string().required("Descrição é obrigatória!"),
+      type: Yup.number().required("Tipo é obrigatório!"),
+      date: Yup.string().required("Data é obrigatória!"),
     });
 
     ValidationSchema.isValid({
@@ -89,24 +90,23 @@ const Task = ({ route, navigation }) => {
           userId: parseInt(1, 10),
         })
         .then((response) => {
-          navigation.navigate('Home');
+          navigation.navigate("Home");
+          loadTasks();
         });
     });
   }
 
   async function handleRemove() {
-    if (route.params !== undefined) {
-      const response = await api.delete(`/task/${route.params.id}`);
+    const response = removeTask(route);
 
-      if (response) {
-        navigation.navigate('Home');
-      }
+    if (response) {
+      navigation.navigate("Home");
     }
   }
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
+    setShow(Platform.OS === "ios");
     setDate(currentDate);
   };
 
@@ -116,19 +116,19 @@ const Task = ({ route, navigation }) => {
   };
 
   const showDatepicker = () => {
-    showMode('date');
+    showMode("date");
   };
 
   const showTimepicker = () => {
-    showMode('time');
+    showMode("time");
   };
 
   return (
     <>
-      <KeyboardAvoidingView behavior='height' style={styles.container}>
+      <KeyboardAvoidingView behavior="height" style={styles.container}>
         <Header showNotification={false} showBack={true} />
 
-        <ScrollView style={{ width: '100%' }}>
+        <ScrollView style={{ width: "100%" }}>
           <ScrollView horizontal={true} style={{ marginVertical: 10 }}>
             {typeIcons.map(
               (icon, index) =>
@@ -150,7 +150,7 @@ const Task = ({ route, navigation }) => {
           <TextInput
             style={styles.input}
             maxLength={30}
-            placeholder='Lembre-me de fazer...'
+            placeholder="Lembre-me de fazer..."
             onChangeText={(text) => setTitle(text)}
             value={title}
           />
@@ -159,7 +159,7 @@ const Task = ({ route, navigation }) => {
           <TextInput
             style={styles.inputArea}
             maxLength={200}
-            placeholder='Detalhes da atividade...'
+            placeholder="Detalhes da atividade..."
             multiline={true}
             onChangeText={(text) => setDescription(text)}
             value={description}
@@ -171,7 +171,7 @@ const Task = ({ route, navigation }) => {
             onTouchStart={showDatepicker}
             onFocus={() => Keyboard.dismiss()}
           >
-            {format(new Date(date), 'dd/MM/yyyy')}
+            {format(new Date(date), "dd/MM/yyyy")}
           </TextInput>
 
           <Text style={styles.label}>Hora</Text>
@@ -180,7 +180,7 @@ const Task = ({ route, navigation }) => {
             onTouchStart={showTimepicker}
             onFocus={() => Keyboard.dismiss()}
           >
-            {format(new Date(date), 'HH:mm')}
+            {format(new Date(date), "HH:mm")}
           </TextInput>
 
           {show && (
@@ -188,7 +188,7 @@ const Task = ({ route, navigation }) => {
               value={date}
               mode={mode}
               is24Hour={true}
-              display='default'
+              display="default"
               onChange={onChange}
               minimumDate={new Date()}
             />
@@ -199,7 +199,7 @@ const Task = ({ route, navigation }) => {
               <Switch
                 onValueChange={() => setDone(!done)}
                 value={done}
-                thumbColor={done ? '#00761b' : '#7159c1'}
+                thumbColor={done ? "#00761b" : "#7159c1"}
               />
               <Text style={styles.switchLabel}>Concluído</Text>
             </View>
