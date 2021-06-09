@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from "react";
 
 import {
   TextInput,
@@ -6,43 +6,45 @@ import {
   Text,
   KeyboardAvoidingView,
   TouchableOpacity,
-} from 'react-native';
+} from "react-native";
 
-import logo from '../../assets/logo.png';
+import logo from "../../assets/logo.png";
 
-import styles from './styles';
+import styles from "./styles";
 
-import AuthContext from '../../contexts/auth';
+import AuthContext from "../../contexts/auth";
 
 export default function Login({ navigation }) {
   const { signed, signIn } = useContext(AuthContext);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleLogin() {
     signIn(email, password);
   }
 
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView behavior="height" style={styles.container}>
       <Image source={logo} style={styles.logo}></Image>
 
       <TextInput
-        autoCapitalize='none'
+        autoCapitalize="none"
         autoCorrect={false}
-        keyboardType='email-address'
+        keyboardType="email-address"
         style={styles.input}
-        placeholder='E-mail'
+        placeholder="E-mail"
+        placeholderTextColor="#ccc"
         onChangeText={(text) => setEmail(text)}
         value={email}
       ></TextInput>
 
       <TextInput
-        autoCapitalize='none'
+        autoCapitalize="none"
         autoCorrect={false}
         style={styles.input}
-        placeholder='Password'
+        placeholder="Password"
+        placeholderTextColor="#ccc"
         secureTextEntry
         onChangeText={(text) => setPassword(text)}
         value={password}

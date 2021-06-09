@@ -1,9 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 7860,
-  "expoServerNgrokUrl": "https://ud-k37.anonymous.mobile-rn.exp.direct",
-  "packagerNgrokUrl": "https://packager.ud-k37.anonymous.mobile-rn.exp.direct",
-  "ngrokPid": 16140
+  "packagerPort": 19000,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
 }

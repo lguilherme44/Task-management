@@ -1,5 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
+import AppLoading from "expo-app-loading";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { AuthProvider } from "./src/contexts/auth";
@@ -11,11 +12,10 @@ import Routes from "./src/routes";
 // console.disableYellowBox = true;
 
 /* Native Base */
-import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   const [isReady, setIsReady] = useState(false);

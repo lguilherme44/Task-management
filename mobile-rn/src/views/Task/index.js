@@ -16,6 +16,10 @@ import typeIcons from "../../utils/typeIcons";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 
+import AppContext from "../../contexts/appContext";
+
+import AuthContext from "../../contexts/auth";
+
 import {
   View,
   ScrollView,
@@ -28,7 +32,6 @@ import {
   Platform,
   Keyboard,
 } from "react-native";
-import AppContext from "../../contexts/appContext";
 
 const Task = ({ route, navigation }) => {
   const [done, setDone] = useState(false);
@@ -40,26 +43,29 @@ const Task = ({ route, navigation }) => {
   const [show, setShow] = useState(false);
   const [userId, setUserId] = useState();
   const [when, setWhen] = useState();
+  const [messageError, setMessageError] = useState("");
 
   const { removeTask, loadTasks } = useContext(AppContext);
+  const { isConnected } = useContext(AuthContext);
+
+  async function loadDetailsTask() {
+    const { data } = await api.get(`/task/${route.params.id}`);
+
+    if (data) {
+      setType(parseInt(data.type), 10);
+      setTitle(data.title);
+      setDescription(data.description);
+      setWhen(data.when);
+      setDone(data.done);
+      setUserId(data.userId);
+    }
+  }
 
   useEffect(() => {
     if (route.params !== undefined) {
-      async function loadDetailsTask() {
-        const { data } = await api.get(`/task/${route.params.id}`);
-
-        if (data) {
-          setType(data.type);
-          setTitle(data.title);
-          setDescription(data.description);
-          setWhen(data.when);
-          setDone(data.done);
-          setUserId(data.userId);
-        }
-      }
       loadDetailsTask();
     }
-  }, [route]);
+  }, []);
 
   const formatDate = format(new Date(date), "yyyy-MM-dd");
   const formatTime = format(new Date(date), "HH:mm");
@@ -73,27 +79,54 @@ const Task = ({ route, navigation }) => {
       date: Yup.string().required("Data é obrigatória!"),
     });
 
-    ValidationSchema.isValid({
+    ValidationSchema.validate({
       title,
       description,
       type,
       date,
-    }).then((valid) => {
-      api
-        .post(`/task`, {
-          macaddress: 1,
-          type,
-          title,
-          done,
-          description,
-          when: `${formatDate}T${formatTime}`,
-          userId: parseInt(1, 10),
-        })
-        .then((response) => {
-          navigation.navigate("Home");
-          loadTasks();
-        });
-    });
+    })
+      .then(() => {
+        if (route.params?.id) {
+          api
+            .put(`/task/${route.params.id}/${isConnected}`, {
+              macaddress: isConnected,
+              done,
+              type,
+              title,
+              description,
+              when: `${formatDate}T${formatTime}`,
+            })
+            .then(() => {
+              navigation.navigate("Home");
+              loadTasks();
+            })
+            .catch((error) => {
+              setMessageError(error);
+            });
+        } else {
+          api
+            .post(`/task`, {
+              macaddress: isConnected,
+              type,
+              title,
+              done,
+              description,
+              when: `${formatDate}T${formatTime}`,
+              userId: isConnected,
+            })
+            .then(() => {
+              navigation.navigate("Home");
+              loadTasks();
+            })
+            .catch((error) => {
+              setMessageError(error);
+            });
+        }
+      })
+      .catch((err) => {
+        setMessageError(err.errors[0]);
+        // Alert(err.errors[0]);
+      });
   }
 
   async function handleRemove() {
@@ -128,7 +161,11 @@ const Task = ({ route, navigation }) => {
       <KeyboardAvoidingView behavior="height" style={styles.container}>
         <Header showNotification={false} showBack={true} />
 
-        <ScrollView style={{ width: "100%" }}>
+        <ScrollView
+          style={{
+            width: "100%",
+          }}
+        >
           <ScrollView horizontal={true} style={{ marginVertical: 10 }}>
             {typeIcons.map(
               (icon, index) =>
@@ -153,6 +190,7 @@ const Task = ({ route, navigation }) => {
             placeholder="Lembre-me de fazer..."
             onChangeText={(text) => setTitle(text)}
             value={title}
+            validationError={messageError}
           />
 
           <Text style={styles.label}>Detalhes</Text>
