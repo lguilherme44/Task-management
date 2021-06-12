@@ -12,12 +12,6 @@ Em breve termino o Mobile, esta sendo construído em React Native.
 [MySQL](https://dev.mysql.com/downloads/mysql/)
 [JWTToken](https://jwt.io/)
 
-## Tarefas concluídas
-
-- [x] Migrar DB de mongo para mysql
-- [x] Migrar mongoose para sequelize
-- [x] Implementação de JWT Token
-
 ## Tarefas a azer
 
 - [x] Privatizar rotas no Frontend
