@@ -1,20 +1,38 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Home from "../views/Home";
 import Task from "../views/Task";
 import QrCode from "../views/QrCode";
 import Profile from "../views/Profile";
+import AuthContext from "../context/auth";
+import isConnected from "../utils/isConnected";
 
 function PrivateRoute() {
+  const { isLogged, setIsLogged } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (isConnected) {
+      setIsLogged(true);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/home" exact component={Home} />
-        <Route path="/task" exact component={Task} />
-        <Route path="/task/:id" exact component={Task} />
-        <Route path="/qrcode" exact component={QrCode} />
-        <Route path="/profile" exact component={Profile} />
+        {isLogged ? (
+          <>
+            <Redirect to="/home" />
+            <Route path="/home" component={Home} />
+          </>
+        ) : (
+          <>
+            <Route path="/task" component={Task} />
+            <Route path="/task/:id" component={Task} />
+            <Route path="/qrcode" component={QrCode} />
+            <Route path="/profile" component={Profile} />
+          </>
+        )}
       </Switch>
     </BrowserRouter>
   );

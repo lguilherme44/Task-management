@@ -10,12 +10,6 @@ export const AuthContextProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (isConnected) {
-      setIsLogged(true);
-    }
-  }, []);
-
   async function sigIn(email, password) {
     setLoading(true);
     const { data, problem } = await api.post("sessions", { email, password });

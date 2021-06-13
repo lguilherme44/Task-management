@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -70,13 +70,13 @@ export const RightSide = styled.div`
   }
 
   .divider::after {
-    content: '|';
+    content: "|";
     margin: 0 10px;
     color: #f5f5f5;
     opacity: 0.5;
   }
-
+  /* 
   button {
     font-size: 16px;
-  }
+  } */
 `;
