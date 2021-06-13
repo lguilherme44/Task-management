@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { format } from 'date-fns';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { ThemeProvider } from "styled-components";
+import { format } from "date-fns";
+import { createBrowserHistory } from "history";
 
 /* Api */
-import api from '../../services/api';
+import api from "../../services/api";
 
 /* Components */
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 /* Icons */
-import typeIcons from '../../utils/typeIcons';
+import typeIcons from "../../utils/typeIcons";
 
 /* Styles */
 import {
@@ -22,24 +22,24 @@ import {
   TextArea,
   Options,
   Save,
-} from './styles';
+} from "./styles";
 
 /* Importação de temas e css default */
-import GlobalStyles from '../../styles/global';
-import theme from '../../styles/themes/theme';
+import GlobalStyles from "../../styles/global";
+import theme from "../../styles/themes/theme";
 
 /* Verifica se o usuário já esta logado */
-import isConnected from '../../utils/isConnected';
+import isConnected from "../../utils/isConnected";
 
 /* Swal, notificações */
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 /* BaseUI */
-import { DatePicker, TimePicker } from 'baseui/datepicker';
-import { FormControl } from 'baseui/form-control';
-import { SIZE } from 'baseui/input';
+import { DatePicker, TimePicker } from "baseui/datepicker";
+import { FormControl } from "baseui/form-control";
+import { SIZE } from "baseui/input";
 
 function Task({ match }) {
   const [type, setType] = useState();
@@ -49,27 +49,27 @@ function Task({ match }) {
   const [hour, setHour] = useState(new Date());
   const [value, setValue] = useState([new Date()]);
 
-  const history = useHistory();
+  const history = createBrowserHistory();
 
   const date = [new Date()];
 
   async function removeTask() {
     Swal.fire({
-      title: 'Deseja ralmente deletar esta tarefa?',
-      text: 'O processo não poderá ser desfeito!',
-      icon: 'warning',
+      title: "Deseja ralmente deletar esta tarefa?",
+      text: "O processo não poderá ser desfeito!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'No',
+      confirmButtonText: "Sim",
+      cancelButtonText: "No",
     }).then((result) => {
       if (result.value) {
         api.delete(`/task/${match.params.id}`).then((response) => {
           Swal.fire({
             timer: 1000,
-            icon: 'success',
-            title: 'Tarefa excluída.',
+            icon: "success",
+            title: "Tarefa excluída.",
           });
-          history.push('/');
+          history.push("/");
         });
       }
     });
@@ -78,11 +78,11 @@ function Task({ match }) {
   async function handleSave() {
     // Validação dos dados
     let ValidationSchema = Yup.object().shape({
-      title: Yup.string().required('Titulo é obrigatório!'),
-      description: Yup.string().required('Descrição é obrigatória!'),
-      type: Yup.number().required('Tipo é obrigatório!'),
-      date: Yup.string().required('Data é obrigatória!'),
-      hour: Yup.string().required('Hora é obrigatória!'),
+      title: Yup.string().required("Titulo é obrigatório!"),
+      description: Yup.string().required("Descrição é obrigatória!"),
+      type: Yup.number().required("Tipo é obrigatório!"),
+      date: Yup.string().required("Data é obrigatória!"),
+      hour: Yup.string().required("Hora é obrigatória!"),
     });
 
     ValidationSchema.isValid({
@@ -95,8 +95,8 @@ function Task({ match }) {
       if (valid) {
         if (match.params.id) {
           api
-            .put(`/task/${match.params.id}/${isConnected}`, {
-              macaddress: isConnected,
+            .put(`/task/${match.params.id}/${parseInt(isConnected)}`, {
+              macaddress: parseInt(isConnected),
               done,
               type,
               title,
@@ -105,7 +105,7 @@ function Task({ match }) {
             })
 
             .then(() => {
-              history.push('/home');
+              history.push("/home");
             })
 
             .catch((error) => {
@@ -123,20 +123,20 @@ function Task({ match }) {
               userId: parseInt(isConnected, 10),
             })
             .then(() => {
-              history.push('/home');
+              history.push("/home");
             });
         }
       } else {
         Swal.fire({
-          icon: 'warning',
-          title: 'Preencha todos os campos!',
+          icon: "warning",
+          title: "Preencha todos os campos!",
         });
       }
     });
   }
 
-  const formatDateToSave = format(new Date(value), 'yyyy-MM-dd');
-  const formatTimeToSave = format(new Date(hour), 'HH:mm:ss');
+  const formatDateToSave = format(new Date(value), "yyyy-MM-dd");
+  const formatTimeToSave = format(new Date(hour), "HH:mm:ss");
 
   useEffect(() => {
     function LoadTaskDetail() {
@@ -173,13 +173,13 @@ function Task({ match }) {
                   index > 0 && (
                     <button
                       key={index}
-                      type='button'
+                      type="button"
                       onClick={() => setType(index)}
                     >
                       <img
                         src={icon}
-                        alt='Tipo da Tarefa'
-                        className={type && type !== index ? 'inative' : ''}
+                        alt="Tipo da Tarefa"
+                        className={type && type !== index ? "inative" : ""}
                       />
                     </button>
                   )
@@ -188,25 +188,25 @@ function Task({ match }) {
             <Input>
               <span></span>
               <input
-                type='text'
-                placeholder='Tutulo da Tarefa'
+                type="text"
+                placeholder="Tutulo da Tarefa"
                 onChange={(e) => setTitle(e.target.value)}
-                value={title || ''}
+                value={title || ""}
               />
             </Input>
             <TextArea>
               <span></span>
               <textarea
                 rows={5}
-                placeholder='Detalhes da Tarefa'
+                placeholder="Detalhes da Tarefa"
                 onChange={(e) => setDescription(e.target.value)}
-                value={description || ''}
+                value={description || ""}
               />
             </TextArea>
-            <FormControl label='Data'>
+            <FormControl label="Data">
               <DatePicker
-                formatString={'dd/MM/yyyy'}
-                value={value || ''}
+                formatString={"dd/MM/yyyy"}
+                value={value || ""}
                 size={SIZE.large}
                 onChange={({ date }) =>
                   setValue(Array.isArray(date) ? date : [date])
@@ -214,9 +214,9 @@ function Task({ match }) {
               />
             </FormControl>
 
-            <FormControl label='Hora'>
+            <FormControl label="Hora">
               <TimePicker
-                value={hour || ''}
+                value={hour || ""}
                 onChange={(date) => setHour(date)}
                 format={24}
                 size={SIZE.large}
@@ -226,7 +226,7 @@ function Task({ match }) {
             <Options>
               <div>
                 <input
-                  type='checkbox'
+                  type="checkbox"
                   checked={done}
                   onChange={() => setDone(!done)}
                 />
@@ -234,13 +234,13 @@ function Task({ match }) {
               </div>
 
               {match.params.id && (
-                <button onClick={removeTask} type='button'>
+                <button onClick={removeTask} type="button">
                   EXCLUIR
                 </button>
               )}
             </Options>
             <Save>
-              <button onClick={handleSave} type='button'>
+              <button onClick={handleSave} type="button">
                 SALVAR
               </button>
             </Save>

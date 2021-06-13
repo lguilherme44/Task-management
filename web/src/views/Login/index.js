@@ -16,12 +16,11 @@ export default function Login() {
   const history = createBrowserHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { sigIn, loading, isLogged } = useContext(AuthContext);
+  const { sigIn, loading } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
     sigIn(email, password);
-
     history.push("/home");
   };
 

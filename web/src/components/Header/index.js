@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, LeftSide, RightSide } from "./styles";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 /* Api */
 import api from "../../services/api";
@@ -14,7 +15,7 @@ import AuthContext from "../../context/auth";
 
 function Header({ clickNotification }) {
   const [lateCount, setLateCount] = useState(0);
-  const history = useHistory();
+  const history = createBrowserHistory();
   const { setIsLogged } = useContext(AuthContext);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ function Header({ clickNotification }) {
       </LeftSide>
 
       <RightSide>
-        <Link to="/">INÍCIO</Link>
+        <Link to="/home">INÍCIO</Link>
 
         <span className="divider" />
 
