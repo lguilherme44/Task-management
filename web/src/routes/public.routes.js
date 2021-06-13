@@ -8,7 +8,7 @@ function PublicRoutes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Login} />
+        <Route path="/" component={Login} />
         <Route path="/register" exact component={Register} />
       </Switch>
     </BrowserRouter>

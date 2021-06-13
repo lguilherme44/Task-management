@@ -7,15 +7,19 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function sigIn(email, password) {
+    setLoading(true);
     const { data, problem } = await api.post("sessions", { email, password });
 
     if (problem && !data) {
+      setLoading(false);
       return toast.error("Failed to connect with API.");
     }
 
     if (data.error) {
+      setLoading(false);
       return toast.error(data.error);
     }
 
@@ -25,6 +29,7 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("userId", data.user.id);
 
     setIsLogged(true);
+    setLoading(false);
   }
 
   async function logOff() {
@@ -33,7 +38,9 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ sigIn, isLogged, setIsLogged, logOff }}>
+    <AuthContext.Provider
+      value={{ sigIn, isLogged, setIsLogged, logOff, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

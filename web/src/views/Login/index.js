@@ -8,10 +8,13 @@ import theme from "../../styles/themes/theme";
 import login from "../../assets/login.svg";
 import AuthContext from "../../context/auth";
 
+import Lottie from "react-lottie";
+import loadingAnimation from "../../assets/loading.json";
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { sigIn } = useContext(AuthContext);
+  const { sigIn, loading } = useContext(AuthContext);
   const history = useHistory();
 
   const handleLogin = (event) => {
@@ -20,6 +23,15 @@ export default function Login() {
     sigIn(email, password);
 
     history.push("/home");
+  };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   return (
@@ -43,14 +55,19 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button className="button" type="submit">
-                Entrar
-              </button>
-
-              <Link className="back-link" to="/register">
-                <FiLogIn size={16} color="#7159c1" />
-                Criar conta grátis
-              </Link>
+              {loading ? (
+                <Lottie options={defaultOptions} height={125} width={125} />
+              ) : (
+                <>
+                  <button className="button" type="submit">
+                    Entrar
+                  </button>
+                  <Link className="back-link" to="/register">
+                    <FiLogIn size={16} color="#7159c1" />
+                    Criar conta grátis
+                  </Link>
+                </>
+              )}
             </form>
           </Section>
         </Container>
