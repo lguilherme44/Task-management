@@ -53,6 +53,10 @@ function Task({ match }) {
 
   const date = [new Date()];
 
+  async function loadTasks() {
+    const { data } = await api.get(`/tasks`);
+  }
+
   async function removeTask() {
     Swal.fire({
       title: "Deseja ralmente deletar esta tarefa?",
@@ -69,7 +73,7 @@ function Task({ match }) {
             icon: "success",
             title: "Tarefa excluída.",
           });
-          history.push("/");
+          history.push("/home");
         });
       }
     });
