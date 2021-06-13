@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Container, LeftSide, RightSide } from './styles';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Container, LeftSide, RightSide } from "./styles";
+import { Link } from "react-router-dom";
 
 /* Api */
-import api from '../../services/api';
+import api from "../../services/api";
 
 /* Icons */
-import logo from '../../assets/logo.svg';
-import bell from '../../assets/bell.svg';
+import logo from "../../assets/logo.svg";
+import bell from "../../assets/bell.svg";
 
-import isConnected from '../../utils/isConnected';
+import isConnected from "../../utils/isConnected";
 
 function Header({ clickNotification }) {
   const [lateCount, setLateCount] = useState(0);
@@ -32,17 +32,17 @@ function Header({ clickNotification }) {
   return (
     <Container>
       <LeftSide>
-        <Link to='/'>
-          <img src={logo} alt='Logo' />
+        <Link to="/">
+          <img src={logo} alt="Logo" />
         </Link>
       </LeftSide>
 
       <RightSide>
-        <Link to='/'>INÍCIO</Link>
+        <Link to="/">INÍCIO</Link>
 
-        <span className='divider' />
+        <span className="divider" />
 
-        <Link to='/task'>NOVA TAREFA</Link>
+        <Link to="/task">NOVA TAREFA</Link>
 
         {isConnected ? (
           <>
@@ -51,20 +51,20 @@ function Header({ clickNotification }) {
               <button type='button'>PROFILE</button>
             </Link> */}
 
-            <span className='divider' />
-            <button onClick={Logout} type='button'>
+            <span className="divider" />
+            <button onClick={Logout} type="button">
               SAIR
             </button>
           </>
         ) : (
-          ''
+          ""
         )}
 
         <>
-          <span className='divider' />
+          <span className="divider" />
 
-          <button onClick={clickNotification} id='notification'>
-            <img src={bell} alt='Notificação' />
+          <button onClick={clickNotification} id="notification">
+            <img src={bell} alt="Notificação" />
             <span>{lateCount}</span>
           </button>
         </>

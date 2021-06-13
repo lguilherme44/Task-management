@@ -1,42 +1,10 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-import isConnected from '../utils/isConnected';
-
-/* Views */
-import Home from '../views/Home';
-import Task from '../views/Task';
-import QrCode from '../views/QrCode';
-import Login from '../views/Login';
-import Register from '../views/Register';
-import Profile from '../views/Profile';
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isConnected ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-      )
-    }
-  />
-);
+import React, { useContext } from "react";
+import AuthContext from "../context/auth";
+import PublicRoutes from "./public.routes";
+import PrivateRoutes from "./private.routes";
 
 export default function Routes() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path='/' exact component={Login} />
-        <Route path='/register' exact component={Register} />
+  const { isLogged } = useContext(AuthContext);
 
-        <PrivateRoute path='/home' exact component={Home} />
-        <PrivateRoute path='/task' exact component={Task} />
-        <PrivateRoute path='/task/:id' exact component={Task} />
-        <PrivateRoute path='/qrcode' exact component={QrCode} />
-        <PrivateRoute path='/profile' exact component={Profile} />
-      </Switch>
-    </BrowserRouter>
-  );
+  return isLogged ? <PrivateRoutes /> : <PublicRoutes />;
 }

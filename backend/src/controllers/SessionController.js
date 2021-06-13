@@ -1,23 +1,23 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
-import authConfig from '../config/auth';
+import authConfig from "../config/auth";
 
-import User from '../models/User';
+import User from "../models/User";
 
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 class SessionController {
   async store(req, res) {
     const user = await User.findOne({ where: { email: req.body.email } });
 
     if (!user) {
-      return res.status(401).json({ error: 'Usuário não encontrado' });
+      return res.json({ error: "E-mail not found" });
     }
 
     const { password } = user;
 
     if (!bcrypt.compareSync(req.body.password, password)) {
-      return res.status(401).send({ error: 'Password is invalid' });
+      return res.send({ error: "Password is invalid" });
     }
 
     const { id, name, email } = user;
