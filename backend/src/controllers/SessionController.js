@@ -11,13 +11,13 @@ class SessionController {
     const user = await User.findOne({ where: { email: req.body.email } });
 
     if (!user) {
-      return res.json({ error: "E-mail not found" });
+      return res.json({ error: "E-mail não encontrado" });
     }
 
     const { password } = user;
 
     if (!bcrypt.compareSync(req.body.password, password)) {
-      return res.send({ error: "Password is invalid" });
+      return res.send({ error: "Password invalido" });
     }
 
     const { id, name, email } = user;

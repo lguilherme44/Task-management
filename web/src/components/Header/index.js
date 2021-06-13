@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Container, LeftSide, RightSide } from "./styles";
 import { Link } from "react-router-dom";
 
@@ -10,9 +10,11 @@ import logo from "../../assets/logo.svg";
 import bell from "../../assets/bell.svg";
 
 import isConnected from "../../utils/isConnected";
+import AuthContext from "../../context/auth";
 
 function Header({ clickNotification }) {
   const [lateCount, setLateCount] = useState(0);
+  const { setIsLogged } = useContext(AuthContext);
 
   useEffect(() => {
     async function lateVerify() {
@@ -26,6 +28,7 @@ function Header({ clickNotification }) {
 
   async function Logout() {
     localStorage.clear();
+    setIsLogged(false);
     window.location.reload();
   }
 

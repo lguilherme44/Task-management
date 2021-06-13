@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import api from "../services/api";
 import { createContext } from "react";
 import { toast } from "react-toastify";
-import api from "../services/api";
 
 const AuthContext = createContext();
 
@@ -15,7 +15,7 @@ export const AuthContextProvider = ({ children }) => {
 
     if (problem && !data) {
       setLoading(false);
-      return toast.error("Failed to connect with API.");
+      return toast.error("Falha ao conectar-se com a API.");
     }
 
     if (data.error) {
@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   async function logOff() {
-    localStorage.clear();
+    // localStorage.clear();
     return setIsLogged(false);
   }
 
