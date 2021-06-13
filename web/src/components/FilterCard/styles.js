@@ -1,19 +1,13 @@
 import styled, { css } from "styled-components";
+import { shade } from "polished";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 260px;
-  height: 120px;
-  /* background: rgba(255, 255, 255, 0.09); */
-  background: rgb(112, 112, 112);
-  background: linear-gradient(
-    335deg,
-    rgba(112, 112, 112, 0.9) 50%,
-    rgba(112, 112, 112, 0.8) 48%,
-    rgba(112, 112, 112, 0.85) 25%
-  );
+  width: 300px;
+  height: 100px;
+  background: ${shade(0.5, "#0d0d0d")};
 
   ${({ actived }) =>
     actived &&
@@ -26,7 +20,7 @@ export const Container = styled.div`
       );
     `}
 
-  border-radius: 10px;
+  border-radius: 10px 35px 10px 35px;
   padding: 10px;
   cursor: pointer;
   opacity: 1;

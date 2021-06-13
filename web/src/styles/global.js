@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     * {
@@ -9,15 +9,36 @@ export default createGlobalStyle`
       -moz-osx-font-smoothing: grayscale;
 
     }
+
     html, body, #root{
-    max-width: 100vw;
-    max-height: 100vh;
-    width: 100%;
-    height: 100%;
+      font-size: 0.9rem;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media screen and (max-width: 1080px) {
+   html {
+       font-size: 93.75%; // 16 * 0,9375 = 15px
+      }
+    }
+
+    @media screen and (max-width: 720px) {
+      html {
+          font-size: 75%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      html {
+          font-size: 68%;
+      }
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      -webkit-font-smothing: antialiased !important;
+      font-family: -apple-system, BlinkMacSystemFont, Roboto, Poppins, sans-serif;
     }
   
     button {

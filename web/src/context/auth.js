@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import api from "../services/api";
 import { createContext } from "react";
 import { toast } from "react-toastify";
+import isConnected from "../utils/isConnected";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (isConnected) {
+      setIsLogged(true);
+    }
+  }, []);
 
   async function sigIn(email, password) {
     setLoading(true);
@@ -33,7 +40,7 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   async function logOff() {
-    // localStorage.clear();
+    localStorage.clear();
     return setIsLogged(false);
   }
 

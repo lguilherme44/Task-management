@@ -37,9 +37,7 @@ function Header({ clickNotification }) {
   return (
     <Container>
       <LeftSide>
-        <Link to="/home">
-          <img src={logo} alt="Logo" />
-        </Link>
+        <Link to="/home">{/* <img src={logo} alt="Logo" /> */}</Link>
       </LeftSide>
 
       <RightSide>

@@ -11,16 +11,13 @@ import "react-toastify/dist/ReactToastify.css";
 const engine = new Styletron();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <StyletronProvider value={engine}>
-        <BaseProvider theme={LightTheme}>
-          <ToastContainer />
-          <Routes />
-        </BaseProvider>
-      </StyletronProvider>
-    </AuthContextProvider>
-  </React.StrictMode>,
-
+  <AuthContextProvider>
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={LightTheme}>
+        <ToastContainer />
+        <Routes />
+      </BaseProvider>
+    </StyletronProvider>
+  </AuthContextProvider>,
   document.getElementById("root")
 );
