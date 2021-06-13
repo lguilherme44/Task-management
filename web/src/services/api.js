@@ -1,7 +1,7 @@
 import { create } from "apisauce";
 
 const api = create({
-  baseURL: "http://localhost:3333",
+  baseURL: "http://192.168.0.3:3333",
   timeout: 10000,
 });
 

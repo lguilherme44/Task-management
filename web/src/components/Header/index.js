@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Container, LeftSide, RightSide } from "./styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 /* Api */
 import api from "../../services/api";
@@ -14,6 +14,7 @@ import AuthContext from "../../context/auth";
 
 function Header({ clickNotification }) {
   const [lateCount, setLateCount] = useState(0);
+  const history = useHistory();
   const { setIsLogged } = useContext(AuthContext);
 
   useEffect(() => {
@@ -27,9 +28,9 @@ function Header({ clickNotification }) {
   }, []);
 
   async function Logout() {
-    localStorage.clear();
+    // localStorage.clear();
     setIsLogged(false);
-    window.location.reload();
+    history.push("/");
   }
 
   return (

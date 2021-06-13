@@ -15,6 +15,7 @@
         "baseui": "^9.84.1",
         "date-fns": "^2.14.0",
         "formik": "^2.1.4",
+        "history": "4.10.0",
         "qrcode.react": "^1.0.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",

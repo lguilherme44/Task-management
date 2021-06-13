@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import { FiLogIn } from "react-icons/fi";
 import { ThemeProvider } from "styled-components";
 import { Container, Section } from "./styles";
@@ -12,14 +13,13 @@ import Lottie from "react-lottie";
 import loadingAnimation from "../../assets/loading.json";
 
 export default function Login() {
+  const history = createBrowserHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { sigIn, loading } = useContext(AuthContext);
-  const history = useHistory();
+  const { sigIn, loading, isLogged } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
-
     sigIn(email, password);
 
     history.push("/home");
