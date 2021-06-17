@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import api from "../../services/api";
@@ -19,17 +19,19 @@ function Home() {
   const [filterActived, setFilterActived] = useState("today");
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    async function loadTasks() {
-      await api
-        .get(`/task/filter/${filterActived}/${isConnected}`)
-        .then((response) => {
-          setTasks(response.data);
-        });
-    }
+  const loadTasks = useCallback(async () => {
+    const { data } = await api.get(
+      `/task/filter/${filterActived}/${isConnected}`
+    );
 
-    loadTasks();
+    if (data) {
+      setTasks(data);
+    }
   }, [filterActived]);
+
+  useEffect(() => {
+    loadTasks();
+  }, [loadTasks]);
 
   function Notification() {
     setFilterActived("late");
@@ -62,27 +64,34 @@ function Home() {
             <button onClick={() => setFilterActived("year")} type="button">
               <FilterCard title="Ano" actived={filterActived === "year"} />
             </button>
+
+            <button onClick={() => setFilterActived("late")} type="button">
+              <FilterCard
+                title="Atrasadas"
+                actived={filterActived === "late"}
+              />
+            </button>
           </FilterArea>
 
           <Title>
             <h3>
-              {filterActived === "late" ? "TAREFAS ATRASADAS" : "TAREFAS"}
+              {filterActived === "late" ? "Tarefas Atrasadas" : "Tarefas"}
             </h3>
           </Title>
 
           <Content>
-            {tasks.map((task) => (
-              <>
+            {tasks.map((task, index) => (
+              <li key={task.id} style={{ listStyle: "none" }}>
                 <Link to={`/task/${task.id}`}>
                   <TaskCard
-                    key={task.id}
+                    index={index}
                     type={task.type}
                     title={task.title}
                     when={task.when}
                     done={task.done}
                   />
                 </Link>
-              </>
+              </li>
             ))}
           </Content>
           <Footer />

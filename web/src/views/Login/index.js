@@ -1,37 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { createBrowserHistory } from "history";
 import { FiLogIn } from "react-icons/fi";
 import { ThemeProvider } from "styled-components";
 import { Container, Section } from "./styles";
 import GlobalStyles from "../../styles/global";
 import theme from "../../styles/themes/theme";
-import login from "../../assets/login.svg";
+import login from "../../assets/logo.svg";
 import AuthContext from "../../context/auth";
+import Loading from "../../components/Loading";
 
-import Lottie from "react-lottie";
-import loadingAnimation from "../../assets/loading.json";
-
-export default function Login() {
-  const history = createBrowserHistory();
+export default function Login({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { sigIn, loading } = useContext(AuthContext);
+  const { sigIn, loading, isLogged } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
     sigIn(email, password);
-    history.push("/home");
   };
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadingAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+  useEffect(() => {
+    if (isLogged) {
+      history.push("/home");
+    }
+  }, [isLogged, history]);
 
   return (
     <>
@@ -55,7 +47,7 @@ export default function Login() {
                 required
               />
               {loading ? (
-                <Lottie options={defaultOptions} height={125} width={125} />
+                <Loading />
               ) : (
                 <>
                   <button className="button" type="submit">

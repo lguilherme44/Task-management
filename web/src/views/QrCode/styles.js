@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -43,7 +43,7 @@ export const ValidationCode = styled.div`
   }
 
   input {
-    font-size: 18px;
+    font-size: 1rem;
     padding: 10px;
     text-align: center;
     border-radius: 10px;
@@ -56,7 +56,7 @@ export const ValidationCode = styled.div`
     font-weight: bold;
     background: #7159c1;
     color: #fff;
-    font-size: 18px;
+    font-size: 1rem;
     padding: 10px;
     border-radius: 10px;
     border: none;

@@ -38,7 +38,7 @@ export default createGlobalStyle`
 
     body {
       -webkit-font-smothing: antialiased !important;
-      font-family: -apple-system, BlinkMacSystemFont, Roboto, Poppins, sans-serif;
+      font-family: Lato, sans-serif;
     }
   
     button {

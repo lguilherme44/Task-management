@@ -7,7 +7,7 @@ import { createBrowserHistory } from "history";
 import api from "../../services/api";
 
 /* Icons */
-import logo from "../../assets/logo.svg";
+// import logo from "../../assets/logo.svg";
 import bell from "../../assets/bell.svg";
 
 import isConnected from "../../utils/isConnected";
@@ -29,7 +29,7 @@ function Header({ clickNotification }) {
   }, []);
 
   async function Logout() {
-    // localStorage.clear();
+    localStorage.clear();
     setIsLogged(false);
     history.push("/");
   }
@@ -41,11 +41,11 @@ function Header({ clickNotification }) {
       </LeftSide>
 
       <RightSide>
-        <Link to="/home">INÍCIO</Link>
+        <Link to="/home">Home</Link>
 
         <span className="divider" />
 
-        <Link to="/task">NOVA TAREFA</Link>
+        <Link to="/task">Nova Task</Link>
 
         {isConnected ? (
           <>
@@ -56,7 +56,7 @@ function Header({ clickNotification }) {
 
             <span className="divider" />
             <button onClick={Logout} type="button">
-              SAIR
+              Sair
             </button>
           </>
         ) : (

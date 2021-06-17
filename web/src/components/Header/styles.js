@@ -41,6 +41,7 @@ export const RightSide = styled.div`
     color: #fff;
     font-weight: bold;
     margin: 0 10px;
+    font-family: Lato;
 
     &:hover {
       color: #7159c1;
@@ -50,8 +51,8 @@ export const RightSide = styled.div`
 
   #notification {
     img {
-      width: 31;
-      height: 36px;
+      width: 27px;
+      height: 25px;
     }
 
     span {
@@ -60,7 +61,7 @@ export const RightSide = styled.div`
       padding: 3px 7px;
       border-radius: 50%;
       position: relative;
-      top: -22px;
+      top: -18px;
       right: 14px;
     }
 
@@ -73,10 +74,6 @@ export const RightSide = styled.div`
     content: "|";
     margin: 0 10px;
     color: #f5f5f5;
-    opacity: 0.5;
+    opacity: 0.2;
   }
-  /* 
-  button {
-    font-size: 16px;
-  } */
 `;

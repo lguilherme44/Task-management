@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -7,8 +7,11 @@ export const Container = styled.div`
 export const FilterArea = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 30px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 
   button {
     border: none;
@@ -25,8 +28,10 @@ export const Content = styled.div`
   justify-content: center;
   padding-bottom: 70px;
 
-  a {
-    text-decoration: none;
+  li {
+    a {
+      text-decoration: none;
+    }
   }
 `;
 
@@ -46,6 +51,6 @@ export const Title = styled.div`
     top: 12px;
     /* background: #3e3e3e; */
     background: #fff;
-    padding: 0 20px;
+    padding: 0 150px;
   }
 `;

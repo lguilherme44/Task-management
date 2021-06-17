@@ -1,17 +1,39 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import AuthContext from "../context/auth";
-import PublicRoutes from "./public.routes";
-import PrivateRoutes from "./private.routes";
-import isConnected from "../utils/isConnected";
 
-export default function Routes() {
-  const { isLogged, setIsLogged } = useContext(AuthContext);
+/** pages */
+import Home from "../views/Home";
+import Task from "../views/Task";
+import QrCode from "../views/QrCode";
+import Profile from "../views/Profile";
+import Login from "../views/Login";
+import Register from "../views/Register";
 
-  useEffect(() => {
-    if (isConnected) {
-      setIsLogged(true);
-    }
-  }, []);
+const CustomRoute = ({ isPrivate = false, ...rest }) => {
+  const { isLogged } = useContext(AuthContext);
 
-  return isLogged ? <PrivateRoutes /> : <PublicRoutes />;
-}
+  if (isPrivate && !isLogged) {
+    return <Redirect to="/" />;
+  }
+
+  return <Route {...rest} />;
+};
+
+const Routes = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <CustomRoute path="/" component={Login} exact />
+        <CustomRoute path="/register" component={Register} />
+        <CustomRoute path="/home" component={Home} isPrivate />
+        <CustomRoute path="/task" component={Task} isPrivate />
+        <CustomRoute path="/task/:id" component={Task} isPrivate />
+        <CustomRoute path="/qrcode" component={QrCode} isPrivate />
+        <CustomRoute path="/profile" component={Profile} isPrivate />
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+export default Routes;

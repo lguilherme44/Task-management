@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -39,7 +39,7 @@ export const Section = styled.div`
       padding: 12px 16px;
       border-radius: 4px;
       border: 1px solid #ddd;
-      font-size: 15px;
+      font-size: 1rem;
       color: #444;
       transition: border-color 0.2s;
       outline: 0;
@@ -61,7 +61,7 @@ export const Section = styled.div`
       display: inline-block;
       text-align: center;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 1rem;
       line-height: 60px;
       transition: filter 0.2s;
     }
@@ -75,7 +75,7 @@ export const Section = styled.div`
       align-items: center;
       margin-top: 20px;
       color: #41414d;
-      font-size: 18px;
+      font-size: 1rem;
       text-decoration: none;
       font-weight: 500;
       transition: opacity 0.2s;

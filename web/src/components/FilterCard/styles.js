@@ -5,9 +5,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 300px;
-  height: 100px;
+  /* width: 300px;
+  height: 100px; */
+  width: 20rem;
+  height: 7rem;
   background: ${shade(0.5, "#0d0d0d")};
+  font-family: Lato;
 
   ${({ actived }) =>
     actived &&
@@ -37,7 +40,7 @@ export const Container = styled.div`
 
   span {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1rem;
     /* color: rgba(255, 255, 255, 0.8); */
     color: #fff;
     align-self: flex-end;

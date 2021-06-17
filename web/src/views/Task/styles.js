@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   span {
     color: #707070;
     margin: 15px 0;
-    font-size: 18px;
+    font-size: 1rem;
     text-align: center;
   }
 `;
@@ -17,6 +17,7 @@ export const Container = styled.div`
 export const Form = styled.div`
   width: 50%;
   margin-bottom: 70px;
+  font-size: 1rem;
 `;
 
 export const TypeIcons = styled.div`
@@ -83,7 +84,7 @@ export const Input = styled.div`
   }
 
   input {
-    font-size: 16px;
+    font-size: 1rem;
     padding: 15px;
     border: none;
     border-bottom: 1px solid #707070;
@@ -99,7 +100,7 @@ export const TextArea = styled.div`
   margin: 20px 0;
 
   textarea {
-    font-size: 14px;
+    font-size: 1rem;
     outline: 0;
     border-radius: 10px;
     padding: 25px;
@@ -112,7 +113,7 @@ export const Options = styled.div`
   justify-content: space-between;
 
   button {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
     color: #707070;
     border: none;
@@ -129,7 +130,6 @@ export const Options = styled.div`
     align-items: center;
     color: #7159c1;
     font-weight: bold;
-    font-size: 18px;
   }
 
   input {
@@ -146,7 +146,7 @@ export const Save = styled.div`
     background: #7159c1;
     color: #fff;
     border: none;
-    font-size: 20px;
+    font-size: 1.2rem;
     border-radius: 10px;
     padding: 20px;
     font-weight: bold;

@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 270px;
-  height: 300px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 0px rgb(0 0 0 / 3%), -1px 0px 2px rgb(0 0 0 / 5%),
+    0px 0px 0px rgb(0 0 0 / 6%), 0px -2px 8px rgb(0 0 0 / 7%),
+    1px 1px 33.4px rgb(0 0 0 / 9%), 2px 8px 50px rgb(0 0 0 / 12%);
   background: #fff;
   /* background: linear-gradient(45deg, #7159c1, #bb02ff); */
   background-attachment: fixed;
@@ -32,7 +34,7 @@ export const TopCard = styled.div`
   text-align: center;
 
   img {
-    width: 100px;
+    width: 5rem;
     margin-bottom: 30px;
   }
 

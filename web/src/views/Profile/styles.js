@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -51,7 +51,7 @@ export const Input = styled.div`
   }
 
   input {
-    font-size: 16px;
+    font-size: 1rem;
     padding: 15px;
     border: none;
     border-bottom: 1px solid #707070;
