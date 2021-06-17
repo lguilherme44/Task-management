@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { format } from "date-fns";
 import { createBrowserHistory } from "history";

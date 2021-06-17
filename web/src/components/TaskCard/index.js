@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { format } from "date-fns";
 import { Container, TopCard, BottomCard } from "./styles";
 

@@ -1,15 +1,13 @@
-import React from 'react';
+import { ThemeProvider } from "styled-components";
 
-import { ThemeProvider } from 'styled-components';
-
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 /* Importação de temas e css default */
-import GlobalStyles from '../../styles/global';
-import theme from '../../styles/themes/theme';
+import GlobalStyles from "../../styles/global";
+import theme from "../../styles/themes/theme";
 
-import { Container, Form, Input } from './styles';
+import { Container, Form, Input } from "./styles";
 
 export default function Profile() {
   return (
@@ -20,7 +18,7 @@ export default function Profile() {
           <Header />
           <Form>
             <h1>Profile Page</h1>
-            <img src='' alt='Profile' />
+            <img src="" alt="Profile" />
             <Input></Input>
           </Form>
 

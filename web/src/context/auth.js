@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../services/api";
 import { createContext } from "react";
 import { toast } from "react-toastify";
@@ -12,8 +12,6 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const userConnected = localStorage.getItem("userId");
-
-    console.log(userConnected);
 
     if (userConnected !== null || undefined) {
       setIsLogged(true);

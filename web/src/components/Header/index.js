@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Container, LeftSide, RightSide } from "./styles";
 import { Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
