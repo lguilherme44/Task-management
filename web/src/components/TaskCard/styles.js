@@ -8,9 +8,12 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   border-radius: 10px;
-  box-shadow: 0px 3px 0px rgb(0 0 0 / 3%), -1px 0px 2px rgb(0 0 0 / 5%),
-    0px 0px 0px rgb(0 0 0 / 6%), 0px -2px 8px rgb(0 0 0 / 7%),
-    1px 1px 33.4px rgb(0 0 0 / 9%), 2px 8px 50px rgb(0 0 0 / 12%);
+  box-shadow:
+  0px 0px 5.3px rgba(0, 0, 0, 0.028),
+  0px 0px 17.9px rgba(0, 0, 0, 0.042),
+  0px 0px 80px rgba(0, 0, 0, 0.07)
+;
+
   background: #fff;
   /* background: linear-gradient(45deg, #7159c1, #bb02ff); */
   background-attachment: fixed;
