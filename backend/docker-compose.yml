@@ -1,0 +1,38 @@
+version: '3.4'
+services:
+  database:
+    container_name: database-taskmanagement
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    networks:
+      - behappy   
+
+  backend:
+    container_name: backend-taskmanagement
+    restart: always
+    build: .
+    depends_on:
+      - database
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    env_file:
+      - ./.env
+    environment:
+      - TYPEORM_HOST=database
+    ports:
+      - 3333:3333
+    networks:
+      - behappy
+    command: ['/bin/sh', '-c', 'yarn && yarn migrate && yarn dev']
+    tty: true
+    stdin_open: true
+
+networks:
+  behappy:
+    driver: bridge

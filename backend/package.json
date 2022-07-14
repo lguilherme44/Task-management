@@ -6,8 +6,7 @@
     "scripts": {
         "dev": "nodemon src/server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "migrate": "npx sequelize-cli db:migrate"
-    },
+        "migrate": "npx sequelize-cli db:migrate"    },
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -15,6 +14,7 @@
         "bcrypt": "^5.0.0",
         "cors": "^2.8.5",
         "date-fns": "^2.14.0",
+        "dotenv": "^16.0.1",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "mysql2": "^2.1.0",

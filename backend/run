@@ -1,0 +1,32 @@
+#!/bin/bash
+
+GREEN="\033[1;32m"
+CYAN="\033[1;36m"
+NO_COLOR="\003[0m"
+
+
+if [ "$1" == "" ]; then
+  echo "Usage:"
+  echo
+  echo -e "$CYAN                      With Docker"
+  echo -e "$GREEN $0  all                         - run all Docker containers"
+  echo -e "$GREEN $0  restart                     - rebuild all Docker containers"
+  echo -e "$GREEN $0  seeds                       - run seeds"
+  echo -e "$CYAN                     Without Docker"
+  echo -e "$GREEN $0  dev                         - run server (dev) - not recommended"
+  echo -e "$GREEN $0  start                       - run server (production) - not recommended"
+  echo
+  exit 0
+fi
+
+if [ "$1" == "all" ]; then
+  docker-compose --env-file=./.env up
+fi
+
+if [ "$1" == "restart" ]; then
+  docker-compose --env-file=./.env down && docker-compose --env-file=./.env up --build --remove-orphans
+fi
+
+if [ "$1" == "seeds" ]; then
+  yarn run:seeds
+fi

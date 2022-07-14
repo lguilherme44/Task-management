@@ -1,0 +1,8 @@
+# Define a imagem a ser usada
+FROM node:14-alpine as builder
+ENV NODE_ENV=development
+
+RUN apk --no-cache add curl
+
+WORKDIR /usr/app
+COPY . .
