@@ -27,8 +27,8 @@
         "react-icons": "^3.10.0",
         "react-lottie": "^1.2.3",
         "react-rainbow-components": "^1.16.0",
-        "react-router": "^5.2.0",
-        "react-router-dom": "^5.2.0",
+        "react-router": "^5.3.0",
+        "react-router-dom": "^6.3.0",
         "react-scripts": "^5.0.1",
         "react-timekeeper": "^2.1.1",
         "react-toastify": "^6.0.5",
@@ -61,6 +61,7 @@
         ]
     },
     "devDependencies": {
+        "@types/react-router-dom": "^5.3.3",
         "@types/styletron-engine-atomic": "^1.1.1",
         "@types/styletron-react": "^5.0.3"
     }

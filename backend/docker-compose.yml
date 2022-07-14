@@ -24,9 +24,9 @@ services:
     env_file:
       - ./.env
     environment:
-      - TYPEORM_HOST=database
+      - DB_HOST=database
     ports:
-      - 3333:3333
+      - ${PORT}:${PORT}
     networks:
       - behappy
     command: ['/bin/sh', '-c', 'yarn && yarn migrate && yarn dev']

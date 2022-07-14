@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { format } from "date-fns";
-import { createBrowserHistory } from "history";
 
+import { useNavigate, useParams } from "react-router-dom";
 /* Api */
 import api from "../../services/api";
 
@@ -40,18 +40,22 @@ import * as Yup from "yup";
 import { DatePicker, TimePicker } from "baseui/datepicker";
 import { FormControl } from "baseui/form-control";
 import { SIZE } from "baseui/input";
+import { useHistory } from "react-router";
 
-function Task({ match }) {
+function Task() {
   const [type, setType] = useState();
   const [done, setDone] = useState(false);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [hour, setHour] = useState(new Date());
   const [value, setValue] = useState([new Date()]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const history = createBrowserHistory();
+  const navigate = useNavigate();
 
   const date = [new Date()];
+
+  const { id } = useParams();
 
   async function removeTask() {
     Swal.fire({
@@ -63,13 +67,13 @@ function Task({ match }) {
       cancelButtonText: "No",
     }).then((result) => {
       if (result.value) {
-        api.delete(`/task/${match.params.id}`).then((response) => {
+        api.delete(`/task/${id}`).then((response) => {
           Swal.fire({
             timer: 1000,
             icon: "success",
             title: "Tarefa excluída.",
           });
-          history.push("/home");
+          navigate("/home");
         });
       }
     });
@@ -93,9 +97,9 @@ function Task({ match }) {
       hour,
     }).then((valid) => {
       if (valid) {
-        if (match.params.id) {
+        if (id) {
           api
-            .put(`/task/${match.params.id}/${parseInt(isConnected)}`, {
+            .put(`/task/${id}/${parseInt(isConnected)}`, {
               macaddress: parseInt(isConnected),
               done,
               type,
@@ -105,13 +109,15 @@ function Task({ match }) {
             })
 
             .then(() => {
-              history.push("/home");
+              navigate("/home");
             })
 
             .catch((error) => {
               alert(error);
             });
         } else {
+          setIsLoading(true);
+
           api
             .post(`/task`, {
               macaddress: isConnected,
@@ -122,8 +128,10 @@ function Task({ match }) {
               when: `${formatDateToSave}T${formatTimeToSave}`,
               userId: parseInt(isConnected, 10),
             })
-            .then(() => {
-              history.push("/home");
+            .then(() => {})
+            .finally(() => {
+              setIsLoading(false);
+              navigate("/home");
             });
         }
       } else {
@@ -141,7 +149,7 @@ function Task({ match }) {
   useEffect(() => {
     function LoadTaskDetail() {
       api
-        .get(`/task/${match.params.id}`)
+        .get(`/task/${id}`)
         .then((response) => {
           setType(parseInt(response.data.type), 10);
           setDone(response.data.done);
@@ -154,10 +162,10 @@ function Task({ match }) {
           alert(error);
         });
     }
-    if (match.params.id) {
+    if (id) {
       LoadTaskDetail();
     }
-  }, [match.params.id]);
+  }, [id]);
 
   return (
     <>
@@ -233,15 +241,15 @@ function Task({ match }) {
                 <span>CONCLUÍDO</span>
               </div>
 
-              {match.params.id && (
+              {id && (
                 <button onClick={removeTask} type="button">
                   EXCLUIR
                 </button>
               )}
             </Options>
             <Save>
-              <button onClick={handleSave} type="button">
-                SALVAR
+              <button onClick={handleSave} type="button" disabled={isLoading}>
+                {isLoading ? "Salvando..." : "Salvar"}
               </button>
             </Save>
           </Form>

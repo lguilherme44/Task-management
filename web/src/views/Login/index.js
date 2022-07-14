@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { ThemeProvider } from "styled-components";
 import { Container, Section } from "./styles";
@@ -9,10 +9,12 @@ import login from "../../assets/logo.svg";
 import AuthContext from "../../context/auth";
 import Loading from "../../components/Loading";
 
-export default function Login({ history }) {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { sigIn, loading, isLogged } = useContext(AuthContext);
+
+  const navigate = useNavigate()
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -21,9 +23,9 @@ export default function Login({ history }) {
 
   useEffect(() => {
     if (isLogged) {
-      history.push("/home");
+      navigate("/home");
     }
-  }, [isLogged, history]);
+  }, [isLogged, navigate]);
 
   return (
     <>
