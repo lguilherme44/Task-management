@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="260" height="123" viewBox="0 0 260 123">
-  <g id="Grupo_57" data-name="Grupo 57" transform="translate(665 901)">
-    <g id="Grupo_52" data-name="Grupo 52" transform="translate(-665 -901)">
-      <path id="Icon_material-radio-button-checked" data-name="Icon material-radio-button-checked" d="M39.354,21.726c-10.034,0-18.177,8.389-18.177,18.726S29.32,59.177,39.354,59.177s18.177-8.389,18.177-18.726S49.387,21.726,39.354,21.726ZM39.354,3C19.286,3,3,19.778,3,40.452S19.286,77.9,39.354,77.9,75.707,61.125,75.707,40.452,59.421,3,39.354,3Zm0,67.413c-16.068,0-29.083-13.408-29.083-29.961S23.285,10.49,39.354,10.49,68.437,23.9,68.437,40.452a30.169,30.169,0,0,1-16.055,26.8A28,28,0,0,1,39.354,70.413Z" transform="translate(184.293 21.48)" fill="#7159c1"/>
-      <text id="T0D" transform="translate(0 98)" fill="#7159c1" font-size="101" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">T0D</tspan></text>
-    </g>
-  </g>
-</svg>
