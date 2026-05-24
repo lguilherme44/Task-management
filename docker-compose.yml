@@ -1,0 +1,53 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: taskflow-api:latest
+    container_name: taskflow-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3333
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production-please}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      DATABASE_URL: file:/data/app.db
+      WEB_ORIGIN: ${WEB_ORIGIN:-http://localhost:8080}
+    volumes:
+      - taskflow_data:/data
+    networks:
+      - taskflow
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3333/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    image: taskflow-web:latest
+    container_name: taskflow-web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - taskflow
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost/"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+networks:
+  taskflow:
+    driver: bridge
+
+volumes:
+  taskflow_data:
+    driver: local
